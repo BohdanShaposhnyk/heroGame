@@ -5,12 +5,12 @@
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 
-import levelReducer from './reducers/levelReducer'
+import reducer from './reducers/reducer'
 
 const configureStore = () => {
     "use strict";
     const middleware = applyMiddleware(logger);
-    return createStore(levelReducer, middleware);
+    return createStore(reducer, middleware);
 };
 
 
