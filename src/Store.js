@@ -4,12 +4,13 @@
 
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
 
 import reducer from './reducers/reducer'
 
 const configureStore = () => {
     "use strict";
-    const middleware = applyMiddleware(logger);
+    const middleware = applyMiddleware(logger, createSagaMiddleware());
     return createStore(reducer, middleware);
 };
 

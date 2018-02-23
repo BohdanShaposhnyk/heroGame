@@ -5,13 +5,13 @@
 const initialState = {
     hero: {
         xp: 0,
-        level: 1,
+   //     level: 1,
         position: {
             x: 0,
             y: 0,
         },
         health: 50,
-        maxHealth: 50,
+  //      maxHealth: 50,
         inventory: {
             potions: 1,
         }

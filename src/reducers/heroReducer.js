@@ -20,23 +20,25 @@ const inventoryReducer = (state = initialState.hero.inventory, action) => {
 };
 
 const hero = (state = initialState.hero, action) => {
-    let { maxHealth, health } = state;
+
     switch (action.type) {
         case Actions.GAIN_XP:
-            let { xp, level } = state;
+            let { xp/*, level */} = state;
             xp += action.payload;
-            level = selectors.getLevel({ ...state, xp });
-            maxHealth = selectors.getMaxHealth({ ...state, xp });
-            return { ...state, xp, level, maxHealth };
+//            level = selectors.getLevel({ ...state, xp });
+ //           maxHealth = selectors.getMaxHealth({ ...state, xp });
+            return { ...state, xp/*, level, maxHealth*/ };
         case Actions.MOVE:
             let { position: { x, y } } = state;
             x += action.payload.x;
             y += action.payload.y;
             return { ...state, position: { x, y } };
         case Actions.DRINK_POTION:
-            let { inventory } = state;
+            let { health } = state;
+            const { inventory } = state;
             if (inventory.potions === 0) return state;
-            health = Math.min(health + 20, maxHealth);
+         //   health = Math.min(health + 20, maxHealth);
+            health += 20;
             return {
                 ...state,
                 health,

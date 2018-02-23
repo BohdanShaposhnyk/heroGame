@@ -8,7 +8,7 @@ import { createSelector } from 'reselect'
 
 const getXp = state => state.xp;
 
-const getHealth = state => state.stats.health;
+const getHealth = state => state.health;
 
 export const getLevel = createSelector(
     getXp,
@@ -25,3 +25,11 @@ export const isHealthLow = createSelector(
     (health, maxHealth) => health < maxHealth * .15
 );
 
+export const getHero = createSelector(
+    [ getHealth, getLevel, getMaxHealth ],
+    (health, level, maxHealth) => ({
+        health,
+        level,
+        maxHealth
+    })
+);
